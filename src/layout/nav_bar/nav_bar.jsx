@@ -1,146 +1,147 @@
+import { useState } from "react";
 
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
 
-const navItems = ['Home', 'About', 'Serivces','Podcast','Gallary','Blogs','Events','Contact Us'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+// ICONS IMPORT
+import MenuIcon from "@mui/icons-material/Menu";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import PinterestIcon from "@mui/icons-material/Pinterest";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import InstagramIcon from "@mui/icons-material/Instagram";
+
+// ASSETS IMPORT
+import logo from "../../assets/logo/logo.png";
+
+const navItems = [
+  "Home",
+  "About",
+  "Services",
+  "Podcast",
+  "Gallery",
+  "Blogs",
+  "Events",
+  "Contact Us",
+];
 
 function NavBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  function toggleMobileDrawer() {
+    setIsMobileDrawerOpen(!isMobileDrawerOpen);
+  }
+  const renderLogo = (
+    <img src={logo} alt="Inner Eye" style={{ width: "100%", height: "100%" }} />
+  );
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  const renderItems = (
+    <>
+      {navItems?.map((item, index) => (
+        <Typography key={index}>{item}</Typography>
+      ))}
+    </>
+  );
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          
-            {/* START MOBILE VIEW */}
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+    <AppBar position="static" sx={{ backgroundColor: "white" }}>
+      <Toolbar disableGutters>
+        {/* START MOBILE VIEW */}
+        <Box
+          sx={{
+            display: { xs: "flex", md: "none" },
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <Box>{renderLogo}</Box>
+          <Box>
             <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              onClick={handleOpenNavMenu}
               color="inherit"
+              onClick={toggleMobileDrawer}
             >
               <MenuIcon />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+          </Box>
+        </Box>
+
+        {/* END MOBILE VIEW  */}
+
+        {/* START DESKTOP VIEW */}
+        <Box
+          sx={{
+            width: "100%",
+            justifyContent: "space-between",
+            alignItems: "center",
+            display: { xs: "none", md: "flex" },
+          }}
+        >
+          <Box>{renderLogo}</Box>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "30px",
+            }}
+          >
+            {renderItems}
+          </Box>
+
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Divider
+              orientation="vertical"
+              variant="middle"
+              flexItem
               sx={{
-                display: { xs: 'block', md: 'none' },
+                borderLeftWidth: 1.5,
+                borderColor: "#232323",
+                height: "25px",
               }}
-            >
-              {navItems.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+            />
+            <Box sx={{ mx: "0.2rem", display: "flex", alignItems: "center" }}>
+              <InstagramIcon />
+              <FacebookIcon />
+              <YouTubeIcon />
+              <LinkedInIcon />
+              <PinterestIcon />
+            </Box>
+            <Divider
+              orientation="vertical"
+              variant="middle"
+              flexItem
+              sx={{
+                borderLeftWidth: 1.5,
+                borderColor: "#232323",
+                height: "25px",
+              }}
+            />
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-            {/* END OF MOBILE VIEW */}
+        </Box>
+        {/* END DESKTOP VIEW */}
+      </Toolbar>
 
-            {/* START DESKTOP VIEW */}
-            <Box sx={{border:"2px solid red",display:"flex",width:"100%",alignItems:"center",justifyContent:"space-between"}}>
-            <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-              border:"1px solid red",
-            }}
-          >
-            LOGO
-          </Typography>
-          
-          <Box sx={{ display: { xs: 'none', md:"flex" } ,justifyContent:"space-between",border:"1px solid red"}}>
-            {navItems.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'inherit', display: 'block'}}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-
-          <Box>
-          Social Media Icons
-          </Box>
-          </Box>
-          {/* END DESKTOP VIEW */}
-        </Toolbar>
-      </Container>
+      <Drawer
+        anchor="top"
+        open={isMobileDrawerOpen}
+        onClose={() => setIsMobileDrawerOpen(false)}
+      >
+        {renderItems}
+      </Drawer>
     </AppBar>
   );
 }
 export default NavBar;
- 
