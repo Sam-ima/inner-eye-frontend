@@ -10,9 +10,11 @@ const theme = createTheme({
       main: "#743d72", // BLACK COLOR
       secondary_300:"#eeeeee",
       secondary_400:"#480765",
-      secondary_600:"#6a1067"
+      secondary_600:"#6a1067",
+      secondary_700:"#743D72",
+      secondary_800:"#510C4F",
     },
-    assent: {
+    accent: {
       main: "#f58220", // GREEN COLOR
     },
   },
@@ -27,6 +29,9 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: "Roborto Serif",
+    fontWeightRegular:"400",
+    fontWeightMedium:"500",
+    fontWeightBold:"700"
   },
 });
 

@@ -50,7 +50,7 @@ function NavBar() {
 
   return (
     <AppBar position="static" sx={{ backgroundColor: "white" }}>
-      <Toolbar disableGutters>
+      <Toolbar disableGutters className="apply-maxWidth" sx={{width:"100%",py:"0"}}>
         {/* START MOBILE VIEW */}
         <Box
           sx={{

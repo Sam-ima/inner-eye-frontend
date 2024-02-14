@@ -1,35 +1,61 @@
 import React from 'react';
 import Yoga from '../../../assets/images/yoga.png';
 import { Typography,Box,Button } from '@mui/material';
+import OrangeDivider from 'src/componenets/ui/divider';  
 
 function FirstSectionLanding() {
 
-  function MyComponent({ isMobile }) {
-    const textStyle = {
-        fontSize: isMobile ? '12px' : '20px',
-    };
-    return (
-        <p style={textStyle}>Responsive text</p>
-    );
-}
   return (
     <div>
-        <Box sx={{display:"flex",alignItems:"center",justifyContent:"center",flexDirection:"column",backgroundColor:"#F3ECF6"}}>
+        <Box sx={{display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        backgroundColor:"#F3ECF6",
+        flexDirection:{xs:"column-reverse",md:"row"}}}>
 
-         {/* STARTING OF IMAGE AND CONTENT PART   */}
-        <Box sx={{display:"flex"}}>
+         
            {/* START OF LEFT CONTENT */}
-          <Box sx={{maxWidth:"40rem",width:"100%",display:"flex",justifyContent:"center",               flexDirection:"column",alignItems:"center",gap:"1.5rem"}}>
-            {MyComponent}
+          <Box sx={{maxWidth:"40rem",
+          width:"100%",
+          display:"flex",
+          justifyContent:"center",
+          flexDirection:"column",
+          alignItems:"center",
+          gap:"1.5rem"}}>
 
-           <h1 style={{fontSize:"30px",fontWeight:"300px",textAlign:"center",fontFamily:"Roboto Serif",color:"#480765"}}> INNER EYE</h1>
+          <OrangeDivider>
+            <Typography varient="h1" className="responsive_fontSize30" 
+            sx={{fontWeight:"600",
+            textAlign:"center",
+            fontSize:"26px",
+            fontFamily:"Roboto Serif",
+            color:"secondary.secondary_400",
+            lineHeight:"35.13px"}}>
+               INNER EYE
+            </Typography>
+          </OrangeDivider>
 
-          <Typography sx={{fontFamily:"Roboto Serif",fontSize:"20px"}}>
+           <p className="responsive_fontSize20"
+            sx={{fontFamily:"Roboto Serif",
+            fontWeight:"200",
+            fontSize:"20px",
+            lineHeight:"23.42px",
+            textAlign:"justified",
+            color:"#000000"}}>
                 Nestled in the lap of the Himalayas in Nepal, Inner Eye is not just a retreat; it's a sanctuary for the mind, body, and spirit. Our personalized packages cater to your unique needs, offering a blend of yoga, meditation, sound healing, breath work, naval treatment, psychosocial counseling, spiritual counseling, and past life regression.
                 At Inner Eye, our commitment goes beyond providing a retreat experience. We empower you to integrate wellness into your everyday life. Join us on this transformative journey, and let the Inner Eye guide you to a life of balance, clarity, and inner harmony.
-          </Typography>
+          </p>
 
-            <Button variant="contained" sx={{backgroundColor:"secondary.secondary_600",color:"white",opacity:"0.8",borderColor:"green",fontFamily:"Roboto Serif",
+            
+            <Button className="responsive_fontSize22" variant="contained"
+             sx={{backgroundColor:"secondary.secondary_600",
+             color:"white",
+             opacity:"0.8",
+             fontSize:"22px",
+             borderColor:"green",
+             fontFamily:"Roboto Serif",
+             fontWeight:"300",
+             lineHeight:"25.76px",
             "&:hover":{
                 backgroundColor:"secondary.main",
                 opacity:"1"
@@ -41,17 +67,23 @@ function FirstSectionLanding() {
         {/* START OF RIGHT IMAGE  */}
         <Box>
            <img src={Yoga} alt="It's a yoga image" style={{maxHeight:"550px",maxWidth:"100%",height:"auto"}}/>
+
+           <Typography varient="h2" className="responsive_fontSize32"
+            sx={{fontWeight:"700",
+            fontSize:"26px",
+            fontFamily:"Roboto Serif",
+            fontStyle:"italic",
+            color:"secondary.secondary_400",
+            lineHeight:"37.47px"}}>
+              “Nestled in the lap of the Himalayas in Nepal”
+            </Typography>
         </Box>
         {/* END OF RIGHT IMAGE */}
 
-        </Box>
-         {/* END OF IMAGE AND CONTENT PART */}
 
-        <Box sx={{display:{xs:"none",md:"flex"}}}>
-            <h2 style={{fontWeight:"700px",fontFamily:"Roboto Serif",fontStyle:"italic",            fontSize:"32px",color:"#510C4F",top:"563px",left:"554px"}}>
-              “Nestled in the lap of the Himalayas in Nepal”
-            </h2>
-        </Box>
+        {/* <Box sx={{display:{xs:"none",md:"flex"}}}> */}
+            
+        {/* </Box> */}
         
       </Box>
     </div>  
