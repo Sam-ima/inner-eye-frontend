@@ -11,7 +11,7 @@ function FirstSectionLanding() {
         alignItems:"center",
         justifyContent:"center",
         backgroundColor:"#F3ECF6",
-        flexDirection:{xs:"column-reverse",md:"row"}}}>
+        flexDirection:{xs:"column-reverse",md:"row",marginBottom:"20px"}}}>
 
          
            {/* START OF LEFT CONTENT */}
@@ -51,7 +51,7 @@ function FirstSectionLanding() {
              sx={{backgroundColor:"secondary.secondary_600",
              color:"white",
              opacity:"0.8",
-             fontSize:"22px",
+             fontSize:"20px",
              borderColor:"green",
              fontFamily:"Roboto Serif",
              fontWeight:"300",
