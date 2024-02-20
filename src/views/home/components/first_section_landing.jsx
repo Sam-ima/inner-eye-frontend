@@ -1,9 +1,38 @@
 import React from 'react';
 import Yoga from '../../../assets/images/yoga.png';
 import { Typography,Box,Button } from '@mui/material';
-import OrangeDivider from 'src/componenets/ui/divider';  
+import OrangeDivider from 'src/componenets/ui/divider'; 
+import { useSelector,useDispatch } from 'react-redux';
+import {increment,
+  decrement,
+  incrementByAmount,incrementByAge,decrementByAge,decrementByAmount} from "src/redux/api/home_slice_api";
 
 function FirstSectionLanding() {
+  //Getting state value from home slice
+
+  const dispatch=useDispatch();
+  function handleIncrement(){
+    dispatch(increment());
+  }
+  function handleDecrement(){
+    dispatch(decrement());
+  }
+  function handleIncrementByAmount(){
+    dispatch(incrementByAmount(20));
+  }
+  function handleDecrementByAmount(){
+    dispatch(decrementByAmount(20));
+  }
+  function handleIncrementByAge(){
+    dispatch(incrementByAge());
+  }
+  function handleDecrementByAge(){
+    dispatch(decrementByAge());
+  }
+
+
+  const value=useSelector((state)=>state.home?.value);
+  const age=useSelector((state)=>state.home?.age);
 
   return (
     <div>
@@ -12,7 +41,8 @@ function FirstSectionLanding() {
         justifyContent:"center",
         backgroundColor:"#F3ECF6",
         flexDirection:{xs:"column-reverse",md:"row",marginBottom:"20px"}}}>
-
+          <h1>My value:{value}</h1>
+          <h2>My age:{age}</h2>
          
            {/* START OF LEFT CONTENT */}
           <Box sx={{maxWidth:"40rem",
@@ -61,6 +91,15 @@ function FirstSectionLanding() {
                 opacity:"1"
             }
          }}>About Us</Button>
+         <Button onClick={handleIncrement} sx={{color:"black"}}>Increment me</Button>
+         <Button onClick={handleDecrement} sx={{color:"black"}}>Decrement me</Button>
+
+         <Button onClick={handleIncrementByAmount} sx={{color:"black"}}>Increment by amount</Button>
+         <Button onClick={handleDecrementByAmount} sx={{color:"black"}}>Decrement by amount</Button>
+         
+         <Button onClick={handleIncrementByAge} sx={{color:"black"}}>Increment by age</Button>
+
+         <Button onClick={handleDecrementByAge} sx={{color:"black"}}>Decrement by age</Button>
         </Box>
         {/* END OF LEFT CONTENT */}
 
