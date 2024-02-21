@@ -3,7 +3,10 @@ import PodcastCard from './podcast_card';
 function PodcastList() {
   return (
     <div>
-      
+      <PodcastCard/>
+      <PodcastCard/>
+      <PodcastCard/>
+      <PodcastCard/>
     </div>
   )
 }

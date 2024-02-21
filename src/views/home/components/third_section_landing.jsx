@@ -1,12 +1,12 @@
-import { Box } from '@mui/material';
 import React from 'react'
 import {Box,Typography,Button} from '@mui/material';
+import OrangeDivider from 'src/componenets/ui/divider'; 
 import PodcastList from './podcast_list';
 function ThirdSectionLanding() {
   return (
     <Box>
         {/* First Box */}
-        <Box sx={{display:"flex",justifyContent:"center",flexDirection:"column",alignItems:"center"}}>
+        <Box sx={{display:"flex",justifyContent:"center",flexDirection:"column",alignItems:"center",backgroundColor:"#F3ECF6",}}>
         <OrangeDivider >
           < Typography sx={{fontSize:"13px",
           color:"secondary.secondary_600",

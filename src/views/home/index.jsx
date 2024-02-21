@@ -1,6 +1,7 @@
 import React from 'react';
 import FirstBoxLanding from  "./components/first_section_landing"
 import SecondBoxLanding from './components/second_section_landing';
+import ThirdSectionLanding from './components/third_section_landing';
 import {Box} from '@mui/material';
 function HomeView() {
   return (
@@ -14,7 +15,10 @@ function HomeView() {
       <Box backgroundColor="white">
 
         <SecondBoxLanding/> 
-      </Box>     
+      </Box> 
+      <Box>
+        <ThirdSectionLanding/>
+      </Box>    
     </main>
   )
 }

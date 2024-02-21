@@ -1,17 +1,17 @@
 import React from 'react';
 import { CardContent,Typography,Card } from '@mui/material';
 
-function ServiceCard() {
+function ServiceCard({item}) {
  
     return (
         <Card sx={{ maxWidth: 275 ,backgroundColor:"secondary.main",maxHeight:280,padding:"24px"}}>
           <CardContent >
             <Typography  className='responsive_fontSize18' sx={{fontWeight:"600",color:"#ffffff"}} color="text.secondary" gutterBottom>
-            Sound Healing
+              {item?.title}
             </Typography>
             
             <Typography className='responsive_fontSize14' sx={{color:"#ffffff",fontWeight:"300"}} color="text.secondary">
-                 Lorem ipsum dolor sit amet dolor sit bdsa Lorem ipsum dolor sit amet dolor sit bdsa Lorem ipsum dolor sit amet dolor sit bdsa 
+                 {item?.description}
             </Typography>
             
           </CardContent>

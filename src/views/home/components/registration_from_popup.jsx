@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-
+import { useDispatch } from "react-redux";
 import {
   Box,
   Typography,
@@ -15,8 +15,11 @@ import {
   Button,
   Grid,
 } from "@mui/material";
+import { addRegistration } from "../../../redux/api/home_slice_api";
 
 function RegistrationFormPopup() {
+  const dispatch=useDispatch();
+
   const [name,setName]=useState("");
   const [gender,setGender]=useState("");
   const [age,setAge]=useState("");
@@ -49,11 +52,25 @@ function RegistrationFormPopup() {
     e.preventDefault(); ///prevert page from refreshing
     // console.log("data",name,gender,age);
   
+  // if(!isTermsChecked)return;
   const data={
-    name,gender,age,email,address,phoneNumber,occupation,medicalHistory,packageType,affilations,teamSize,memberNumber
+    name,
+    gender,
+    age,
+    email,
+    address,
+    phoneNumber,
+    occupation,
+    medicalHistory,
+    packageType,
+    affilations,
+    teamSize,
+    memberNumber
   };
 
   console.log("data",data);
+
+  dispatch(addRegistration(data));
 };
   return (
     <div>
