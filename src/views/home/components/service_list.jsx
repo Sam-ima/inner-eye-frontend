@@ -44,13 +44,11 @@ return(
         {
           serviceList?.map((item)=>{
           return <ServiceCard key={item?._id} item={item}/>
-                  
-    })
-              }
-                
-            </Slider>
+          })
+        }
+      </Slider>
                       
-        </div>
+    </div>
     )
 }
 export default ServiceList;

@@ -4,15 +4,15 @@ import { BASE_URL } from "src/config/base_url";
 import axios from "axios";
 
 const initialState = {
-  value: 1000,
-  name: "hello",
-  age: 49,
-
   isServiceListLoading: false,
   serviceList: [],
   serviceListError: null,
 
   isRegistrationLoading:false,
+
+  isGallaryListLoading:false,
+  gallaryList:[],
+  gallaryListError:null,
   
 };
 
@@ -36,7 +36,7 @@ export const fetchServiceList = createAsyncThunk(
     }
   }
 );
-
+//for registration form
 export const addRegistration = createAsyncThunk(
   "home/addRegistration",
   async (data, { rejectWithValue }) => {
@@ -55,26 +55,29 @@ console.log("sending data to database",{data});
     }
   }
 );
+//for gallary
+export const fetchGallaryList = createAsyncThunk(
+  "home/fetchGallaryList",
+  async (_, { rejectWithValue }) => {      // get garna ko lagi underscore rakhne 
+    // api
+    try {
+      const response = await axios.get(`${BASE_URL}/gallary`);
+      console.log("register response",response)
+      if (response?.status === 200) {
+        return response?.data?.data;
+      }
+    } catch (err) {
+      const errorMessage =
+        err?.response?.data?.message || "Could not fetch gallary list";
+      return rejectWithValue(errorMessage);
+    }
+  }
+)
 
 export const homeSlice = createSlice({
   name: "home",
   initialState,
 
-  reducers: {
-    incrementValue: (state) => {
-      state.value += 1;
-    },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementAge: (state) => {
-      state.age += 1;
-    },
-    incrementByAmount: (state, action) => {
-      console.log(action);
-      state.value += action.payload;
-    },
-  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchServiceList.pending, (state) => {
@@ -97,6 +100,20 @@ export const homeSlice = createSlice({
       })
       .addCase(addRegistration.rejected, (state, action) => {
         state.isRegistrationLoading = false;
+       
+      })
+      // fetch gallary list
+      .addCase(fetchGallaryList.pending, (state,action) => {
+        state.isGallaryListLoading = true;
+      })
+      .addCase(fetchGallaryList.fulfilled, (state, action) => {
+        state.isGallaryListLoading= false;
+        state.gallaryList=action.payload;
+        
+      })
+      .addCase(fetchGallaryList.rejected, (state, action) => {
+        state.isGallaryListLoading = true;
+        state.gallaryListError=action.payload;
        
       });
   },

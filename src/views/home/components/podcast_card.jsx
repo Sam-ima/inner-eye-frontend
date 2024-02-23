@@ -1,31 +1,19 @@
 import React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { CardContent,Typography,Card } from '@mui/material';
 
 function PodcastCard() {
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+      <CardContent>
+        
+        <Typography className='responsive_fontSize14' sx={{fontWeight:"700",lineHeight:"18.74px",font:"Roboto Serif"}}>
           Lorem ipsum dolor sit amet
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
+        </Typography>
+        <Typography className='responsive_fontSize14' sx={{font:"Roboto Serif",fontWeight:"400",letterSpacing:"0.25px"}}>
           Lorem ipsum dolor sit amet dolor sit bdsa Lorem ipsum dolor sit amet dolor sit bdsa Lorem ipsum dolor sit amet dolor sit bdsa 
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+        </Typography>
+      </CardContent>
+  </Card>
   )
 }
-
 export default PodcastCard;

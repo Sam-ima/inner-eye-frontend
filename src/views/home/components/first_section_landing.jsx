@@ -58,7 +58,6 @@ function FirstSectionLanding() {
             sx={{fontWeight:"600",
             textAlign:"center",
             fontSize:"26px",
-            fontFamily:"Roboto Serif",
             color:"secondary.secondary_400",
             lineHeight:"35.13px"}}>
                INNER EYE
@@ -66,7 +65,7 @@ function FirstSectionLanding() {
           </OrangeDivider>
 
            <p className="responsive_fontSize20"
-            sx={{fontFamily:"Roboto Serif",
+            sx={{
             fontWeight:"200",
             fontSize:"20px",
             lineHeight:"23.42px",
@@ -83,7 +82,6 @@ function FirstSectionLanding() {
              opacity:"0.8",
              fontSize:"20px",
              borderColor:"green",
-             fontFamily:"Roboto Serif",
              fontWeight:"300",
              lineHeight:"25.76px",
             "&:hover":{
@@ -110,7 +108,6 @@ function FirstSectionLanding() {
            <Typography varient="h2" className="responsive_fontSize32"
             sx={{fontWeight:"700",
             fontSize:"26px",
-            fontFamily:"Roboto Serif",
             fontStyle:"italic",
             color:"secondary.secondary_400",
             lineHeight:"37.47px"}}>
